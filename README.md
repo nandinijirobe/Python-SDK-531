@@ -1,3 +1,5 @@
+This our ip addr: http://192.168.0.41/
+
 # Python SDK
 
 Python library to work with your Misty robot. Currently in BETA. It is designed to follow a Pythonicated version of the naming convention within the [API Explorer](http://sdk.mistyrobotics.com/api-explorer/index.html).

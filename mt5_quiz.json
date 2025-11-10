@@ -1,0 +1,34 @@
+{
+        "questions": [
+                "Alright! Now that you know all about our awesome running club, let’s see how well you were paying attention! I’ve got a quick, fun quiz for you. Don’t worry, there’s no pressure and it's just for fun. Shall we begin?",
+                "How many members are currently part of our running club? Is it A) 50, b) 300, or C) 1000?",
+                "How many minutes of running does it take to boost your mood? Is it A) 15 minutes, B) 30 minutes, or C) 1 hour?",
+                "True or False: Running strengthens not just your legs, but also your bones and heart.",
+                "Regular running can lower your risk of heart disease by up to what percent: 10%, 30%, or 45%?",
+                "What’s our club’s most popular activity: sunrise runs, weekend challenges, or scavenger hunt runs?"
+        ],
+        "correct_feedback": [
+                "Great! Let’s get started.",
+                "You got it! We have about 300 members. You’re off to a running start!",
+                "Yes! According to studies at Harvard, 15 minutes is all you need to improve your mood. That’s quicker than waiting in a Starbucks line during rush hour for some coffee.",
+                "That’s right. True! Running is a total-body superhero workout.",
+                "That’s correct. According to the National Institute of Health, it’s 45%! Your heart’s happy just hearing that.",
+                "Right on! Scavenger hunt runs are our fan favorite. Looks like you’re ready to join one."
+        ],
+        "incorrect_feedback": [
+                "Aw that's okay. Maybe next time!",
+                "It’s actually 300! That one trips people up; don’t worry, you’re still in the race.",
+                "Not quite. 15 minutes does the trick. Let’s sprint into the next one!",
+                "Almost …the right answer is True! But hey, every great runner stumbles once.",
+                "It’s actually 45%! Pretty impressive, right? Your heart’s cheering you on anyway.",
+                "Not quite. Scavenger hunt runs take the crown. You’ll have to come see why!"
+        ],
+        "transitions": [
+                "Here comes the first question…",
+                "Let’s see how you do on the next one.",
+                "Keep it up! The next fact might make you a running expert! Here it is…",
+                "You’re doing amazing! Let’s see if you can ace the next one. The question is…",
+                "Okay, last question coming up! Let’s finish this strong!",
+                "Great job! You made it to the finish line!"
+        ]
+}
