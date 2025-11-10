@@ -26,6 +26,9 @@ def mt5_quiz_session():
                 return
         
         # begin quiz
+        # TODO: add to while loop condition a way to exit the quiz early, and also a way to end the quiz after all questions have been asked
+        # TODO: Make voice sound more natural and also add behaviors to make it more human like 
+
         print("Starting to ask participant questions...")
         while user_input != "-1":
                 misty.speak(quiz_data["questions"][question_no])
