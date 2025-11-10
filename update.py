@@ -46,6 +46,9 @@ if __name__ == "__main__":
         ip_address = "192.168.0.41"
         # Create an instance of a robot
         misty = Robot(ip_address)
+
+        #TODO: Add voice and video recording functionality here
+
         mt5_quiz_session()
 
 
