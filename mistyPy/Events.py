@@ -61,6 +61,7 @@ class Events:
 
 
 class Event:
+
     def __init__(self,
                  ip,
                  event_type,
@@ -119,6 +120,7 @@ class Event:
         self.is_active = False
 
     def on_open(self):
+
         def run(*args):
             self.ws.send(str(self.get_subscribe_message()))
 

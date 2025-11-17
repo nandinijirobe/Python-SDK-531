@@ -33,6 +33,7 @@
 from requests import request, exceptions
 from os import linesep, path
 from yapf.yapflib.yapf_api import FormatFile
+from typing import List
 
 class Argument:
     def __init__(self, name: str, value_type: object, nullable: bool, ordinal_number: int):
@@ -226,7 +227,7 @@ class RobotCommands:
 
         return method_string
 
-    def parse_arguments_into_kwargs(self, arguments: list[Argument]):
+    def parse_arguments_into_kwargs(self, arguments: List[Argument]):
         if len(arguments) == 0:
             return
 
