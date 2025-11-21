@@ -1,0 +1,29 @@
+/* File card styling for audio file management */
+.file-card {
+  background: #f7fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.file-card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.2s ease;
+}
+
+.file-card.selected {
+  background: #e6fffa;
+  border-color: #38b2ac;
+}
+
+.file-status-ready {
+  color: #38a169;
+  font-weight: bold;
+}
+
+.file-status-missing {
+  color: #e53e3e;
+  font-weight: bold;
+}

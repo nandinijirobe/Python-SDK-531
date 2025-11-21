@@ -1,0 +1,21 @@
+/* Circular count badges for marketing scripts */
+.audio-count-badge {
+  display: inline-block;
+  background-color: #4a5568;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* Hover effect for badges */
+.audio-count-badge:hover {
+  background-color: #2d3748;
+  transition: background-color 0.2s ease;
+}

@@ -10,20 +10,84 @@ python >= 3.8
 requests>=2.25.1<br>
 websocket-client<=0.57.0<br>
 yapf>=0.30.0
-___
+
+## WOZ Controller Setup (Streamlit GUI)
+
+This repository includes a Streamlit-based WOZ (Wizard of Oz) controller for marketing research scenarios with Misty.
+
+### Quick Start for WOZ Controller
+
+1. **Activate conda environment (optional):**
+
+   ```bash
+   conda activate misty_python_sdk
+   ```
+
+   _Note: The app can also run from the (base) conda environment_
+
+2. **Install required packages:**
+
+   ```bash
+   pip install streamlit
+   ```
+
+3. **Configure robot IP:**
+
+   - Edit `woz_app.py` and update `ROBOT_IP = "192.168.0.41"` with your Misty's IP address
+
+4. **Run the Streamlit app:**
+
+   ```bash
+   streamlit run woz_app.py
+   ```
+
+5. **Access the web interface:**
+   - Open your browser to `http://localhost:8501`
+   - Upload MP3 files for each marketing script category
+   - Control volume, play/pause/stop audio on Misty
+   - Files persist across page refreshes
+
+### WOZ Controller Features
+
+- **Script-specific file management:** Each marketing technique has its own audio library
+- **Real-time volume control:** Adjust volume with immediate effect
+- **Persistent storage:** Uploaded files remain available after page refresh
+- **Media controls:** Play/pause toggle and stop buttons
+- **Auto-cleanup:** Audio stops when files are deleted or page refreshes
+- **Professional UI:** Modular CSS architecture for clean styling
+
+### Marketing Script Categories
+
+The controller supports 6 marketing techniques:
+
+- Anchoring
+- Social Proof
+- Scarcity
+- Reciprocity
+- Authority
+- Gamification
+
+---
+
 ## Updating available commands and events
+
 After installing the requirements, the first thing that should be done is updating the methods and events using the builtin generator.
+
 ```
 # First import the RobotGenerator
 from mistyPy.GenerateRobot import RobotGenerator
 
-# Creating a new robot generator will rewrite the RobotCommands.py and Websocket.py 
+# Creating a new robot generator will rewrite the RobotCommands.py and Websocket.py
 # files to adjust them to the commands and websockets the robot has available
 RobotGenerator("<IP_ADDRESS>")
 ```
-___
+
+---
+
 ## Running commands
+
 To send commands to the robot first we need to initialize the connection to the robot.
+
 ```
 # First import the robot object
 from mistyPy.Robot import Robot
@@ -35,6 +99,7 @@ if __name__ == "__main__":
 ```
 
 Sending the commands uses the REST API for Misty, so every return from a command will be a response object.
+
 ```
     current_response = misty.move_arms(30, 20)
     print(current_response)
@@ -47,7 +112,9 @@ Sending the commands uses the REST API for Misty, so every return from a command
     print(current_response.json())
     print(current_response.json()["result"])
 ```
+
 Output:
+
 ```
 <Response [200]>
 200
@@ -57,9 +124,13 @@ Output:
 {'result': {'local': 'Debug', 'remote': 'Debug'}, 'status': 'Success'}
 {'local': 'Debug', 'remote': 'Debug'}
 ```
-___
+
+---
+
 ## Events
+
 Subscribing to events is done through the Robot object. The list of available events are found in the Events class.
+
 ```
 from mistyPy.Robot import Robot
 from mistyPy.Events import Events
@@ -68,11 +139,12 @@ from mistyPy.Events import Events
 There are then two ways of interacting with the events. The first is to use a callback function for every new message returned after the successful subscription, the second is to reference the event object itself.
 By default all event registrations are set to trigger once then unregister. To set an event registration to constantly trigger use the `keep_alive` parameter and set it to `True`.
 
-Example: 
+Example:
 
 `misty.register_event(Events.VoiceRecord, "AudioCallbackEvent", callback_function=capture_speech_callback, keep_alive=True)`
 
 ### Using a callback function
+
 ```
 # The callback function must only accept one parameter, which will be the event message data
 def capture_speech_callback(data):
@@ -99,13 +171,16 @@ if __name__ == "__main__":
         # Unregister events if they aren't all unregistered due to an error
         misty.unregister_all_events()
 ```
+
 Output:
+
 ```
 {'errorCode': 0, 'errorMessage': 'Detected end of voice command.', 'filename': 'capture_Dialogue.wav', 'speechRecognitionResult': 'How are you doing?', 'success': True}
 Event connection has closed for event: AudioCallbackEvent
 ```
 
 ### Using the Event object
+
 ```
 if __name__ == "__main__":
     try:
@@ -128,13 +203,17 @@ if __name__ == "__main__":
         misty.unregister_all_events()
 
 ```
+
 Output:
+
 ```
 {'errorCode': 0, 'errorMessage': 'Detected end of voice command.', 'filename': 'capture_Dialogue.wav', 'speechRecognitionResult': 'What are you doing?', 'success': True}
 ```
 
 ## Adding event filters
+
 There are built in methods for adding filters to the events. By default there are a handful of built in event specific filters. A sample are shown here:
+
 ```
 from mistyPy.EventFilters import EventFilters
 
@@ -142,13 +221,16 @@ misty.register_event(Events.ActuatorPosition, "right_arm", condition=[EventFilte
 ```
 
 The condition parameter takes a list of filters to apply, so the event conditions can be combined:
+
 ```
 front_right = misty.register_event(Events.TimeOfFlight, "frontright",
-    condition=[EventFilters.TimeOfFlightPosition.FrontRight, 
+    condition=[EventFilters.TimeOfFlightPosition.FrontRight,
     EventFilters.TimeOfFlightDistance.MaxDistance(0.150),
     EventFilters.TimeOfFlightStatus.MaxStatus(102)])
 ```
+
 There is also a method to build up your own filters that are not built in yet. The following example shows creating an event filter such that the returned voice record event must have an error code of 0 for the event to be triggered
+
 ```
 misty.register_event(Events.VoiceRecord, "found_speech_result", condition=[EventFilters.event_filter("errorCode", "=", 0)])
 ```

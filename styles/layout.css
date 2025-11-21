@@ -1,0 +1,28 @@
+/* Layout and spacing utilities */
+.sidebar-section {
+  margin: 16px 0;
+  padding: 12px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+.content-divider {
+  margin: 24px 0;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* Responsive columns */
+.control-columns {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
