@@ -8,7 +8,7 @@ from mistyPy.Robot import Robot
 
 def main():
     # Robot's IP address
-    ip_address = "192.168.0.41"
+    ip_address = "192.168.0.73"
     
     print("Connecting to Misty robot...")
     
